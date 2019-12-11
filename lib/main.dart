@@ -18,58 +18,98 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String image = 'assets/images/jupiter.png';
+
+  void selectImg(String selection) {
+    setState(() {
+      image = 'assets/images/$selection.png';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Container(
-              color: Colors.black,
-              height: 500,
-              child: Image.asset(
-                'assets/images/earth.png',
-              ),
-            ),
-            FlatButton(
-              color: Colors.purple,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Text(
-                'Option 1',
-                style: TextStyle(
-                  fontSize: 40,
+              // color: Colors.black,
+              height: MediaQuery.of(context).size.height * 0.6,
+              // width: MediaQuery.of(context).size.width * 0.5,
+              child: FittedBox(
+                fit: BoxFit.fitWidth,
+                child: Image.asset(
+                  image,
+                  scale: 0.1,
                 ),
               ),
-              onPressed: () {},
             ),
-            FlatButton(
-              color: Colors.purple,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Text(
-                'Option 2',
-                style: TextStyle(
-                  fontSize: 40,
+            FittedBox(
+              child: Container(
+                // color: Colors.green,
+
+                // height: MediaQuery.of(context).size.height * 0.1,
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: FlatButton(
+                  color: Colors.purple,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    'Earth',
+                    style: TextStyle(
+                      fontSize: 40,
+                    ),
+                  ),
+                  onPressed: () => selectImg('earth'),
                 ),
               ),
-              onPressed: () {},
             ),
-            FlatButton(
-              color: Colors.purple,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Text(
-                'Option 3',
-                style: TextStyle(
-                  fontSize: 40,
+             FittedBox(
+              child: Container(
+                // color: Colors.green,
+
+                // height: MediaQuery.of(context).size.height * 0.1,
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: FlatButton(
+                  color: Colors.purple,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    'Saturn',
+                    style: TextStyle(
+                      fontSize: 40,
+                    ),
+                  ),
+                  onPressed: () => selectImg('saturn'),
                 ),
               ),
-              onPressed: () {},
+            ),
+             FittedBox(
+              child: Container(
+                // color: Colors.green,
+
+                // height: MediaQuery.of(context).size.height * 0.1,
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: FlatButton(
+                  color: Colors.purple,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    'Jupiter',
+                    style: TextStyle(
+                      fontSize: 40,
+                    ),
+                  ),
+                  onPressed: () => selectImg('jupiter'),
+                ),
+              ),
             ),
           ],
         ),
